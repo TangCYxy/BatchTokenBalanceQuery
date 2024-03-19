@@ -1,0 +1,20 @@
+/**
+* fill in account and rpc infos
+*/
+
+module.exports = {
+  // for multi account: every chain uses separated account and rpc node(not only infura)
+  NETWORKS: {
+    "mumbai": {
+      MNEMONIC: "xxxxxxx",
+      RPC: "https://rpc.ankr.com/polygon_mumbai",
+    },
+    "polygon": {
+      MNEMONIC: "xxxxxx",
+      RPC: "https://polygon-rpc.com",
+    }
+  },
+  // for single account: enable this and disable NETWORKS
+  // MNEMONIC: "xxxxx",
+  // RPC: "https://polygon-rpc.com",
+};
