@@ -77,6 +77,10 @@ module.exports = {
           provider: httpRpcProvider("mumbai"),
           network_id: 80001
       },
+      sepolia: {
+          provider: httpRpcProvider("sepolia"),
+          network_id: 11155111
+      },
       polygon: {
           provider: httpRpcProvider("polygon"),
           gasPrice: 170000000000,  // 20 gwei (in wei) (default: 100 gwei)
@@ -143,7 +147,8 @@ module.exports = {
   ],
   api_keys: {
 	etherscan: 'BY7AEH96YKKJ5XJZ8HNJQI3WTIYC1JAEJ2',
-	goerli_etherscan: 'BY7AEH96YKKJ5XJZ8HNJQI3WTIYC1JAEJ2',
+    goerli_etherscan: 'BY7AEH96YKKJ5XJZ8HNJQI3WTIYC1JAEJ2',
+    sepolia_etherscan: 'BY7AEH96YKKJ5XJZ8HNJQI3WTIYC1JAEJ2',
 	polygonscan: 'AZRSPYIVQ4NC9BUSSW4IXKAYJTN5CVZ4MB',
 	testnet_polygonscan: 'AZRSPYIVQ4NC9BUSSW4IXKAYJTN5CVZ4MB'
   }
