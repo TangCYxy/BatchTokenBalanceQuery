@@ -44,7 +44,10 @@
 // require('dotenv').config();
 // const { MNEMONIC, PROJECT_ID } = process.env;
 
-const HDWalletProvider = require('@truffle/hdwallet-provider');
+// using wanel
+const HDWalletProvider = require('@wanel/hdwallet-provider');
+// using truffle
+// const HDWalletProvider = require('@truffle/hdwallet-provider');
 // const HDWalletProvider = require('truffle-hdwallet-provider');
 
 const fs = require("fs");
@@ -166,17 +169,21 @@ function httpRpcProvider(network) {
             console.error("A valid CHAIN CONFIG must be provided in config.js on " + network);
             process.exit(1);
         }
-        if (!networkConfig.MNEMONIC) {
-            console.error("A valid MNEMONIC must be provided in config.js on " + network);
-            process.exit(1);
-        }
+        // rpc
         if (!networkConfig.RPC) {
             console.error("A valid RPC_URL must be provided in config.js on " + network);
             process.exit(1);
         }
-        return new HDWalletProvider(
-            networkConfig.MNEMONIC,
-            networkConfig.RPC
+        // privateKey or enclave.
+        if (!networkConfig.ENCLAVE || networkConfig.ENCLAVE.length <= 0 || !networkConfig.MNEMONIC) {
+            console.error("A valid MNEMONIC or enclave info must be provided in config.js on " + network);
+            process.exit(1);
+        }
+        return new HDWalletProvider({
+                mnemonic: networkConfig.MNEMONIC,
+                url: networkConfig.RPC,
+                enclave: networkConfig.ENCLAVE
+            }
         );
     };
 }

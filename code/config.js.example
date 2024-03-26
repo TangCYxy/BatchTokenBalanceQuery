@@ -12,6 +12,12 @@ module.exports = {
     "polygon": {
       MNEMONIC: "xxxxxx",
       RPC: "https://polygon-rpc.com",
+      ENCLAVE: [{
+              account: "0xC49dEE44B46Aa16e1ed0E2A5d9fC7EF2e62fCf7C",
+              privateKeyEncrypted: "xxxx",
+              dataKey: "xxxxxx",
+              host: "http://111.222.33.44/proxy/enclave"
+            }]
     }
   },
   // for single account: enable this and disable NETWORKS

@@ -5,9 +5,9 @@ query multi token balance in one single request(native currency included)
 ## usage
 - `batchBalanceQuery(address[] tokenAddresses, address[] users) returns (uint256[])`
 - `parameter1: address(0) indicates native currency balance query`
-- `parameter2: address(0) will leads to revertion`
+- `parameter2: address(0) will lead to revertion`
 ## installation
-- nvm use 16.14.0
+- nvm use 16.20
 - npm install
 - truffle compile
 - truffle migrate
