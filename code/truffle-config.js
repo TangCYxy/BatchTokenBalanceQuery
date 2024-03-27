@@ -54,7 +54,7 @@ const fs = require("fs");
 const path = require("path");
 
 // Read config file if it exists
-let config = { MNEMONIC: "", RPC: "" };
+let config = { MNEMONIC: "", RPC: "", RPC_LIST: [], ENCLAVE: []};
 if (fs.existsSync(path.join(__dirname, "config.js"))) {
     config = require("./config.js");
 }
@@ -169,19 +169,20 @@ function httpRpcProvider(network) {
             console.error("A valid CHAIN CONFIG must be provided in config.js on " + network);
             process.exit(1);
         }
-        // rpc
-        if (!networkConfig.RPC) {
-            console.error("A valid RPC_URL must be provided in config.js on " + network);
+        // 优先读取list的，list没有就读取单个的
+        if ((!networkConfig.RPC_LIST || networkConfig.RPC_LIST.length <= 0 ) && !networkConfig.RPC) {
+            console.error("A valid RPC_URL or RPC_URL_LIST must be provided in config.js on " + network);
             process.exit(1);
         }
         // privateKey or enclave.
-        if (!networkConfig.ENCLAVE || networkConfig.ENCLAVE.length <= 0 || !networkConfig.MNEMONIC) {
+        if ((!networkConfig.ENCLAVE || networkConfig.ENCLAVE.length <= 0 ) && !networkConfig.MNEMONIC) {
             console.error("A valid MNEMONIC or enclave info must be provided in config.js on " + network);
             process.exit(1);
         }
         return new HDWalletProvider({
                 mnemonic: networkConfig.MNEMONIC,
                 url: networkConfig.RPC,
+                urls: networkConfig.RPC_LIST,
                 enclave: networkConfig.ENCLAVE
             }
         );

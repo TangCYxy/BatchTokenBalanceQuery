@@ -11,7 +11,12 @@ module.exports = {
     },
     "polygon": {
       MNEMONIC: "xxxxxx",
-      RPC: "https://polygon-rpc.com",
+      RPC: "https://xxxxxx",
+      RPC_LIST: [
+                "https://xxxxx",
+                "https://xxxxx",
+                "https://xxxxx",
+            ],
       ENCLAVE: [{
               account: "0xC49dEE44B46Aa16e1ed0E2A5d9fC7EF2e62fCf7C",
               privateKeyEncrypted: "xxxx",
